@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  oauth2_be:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oauth2_be
+    command: npm run start:prod
+    restart: unless-stopped
+    ports:
+      - ${PORT}:3000
+    depends_on:
+      - oauth2_db_main
+      - oauth2_db_users
+
+  oauth2_db_main:
+    image: postgres:14.9
+    container_name: oauth2_db_main
+    restart: unless-stopped
+    hostname: db_main
+    ports:
+      - "6542:5432"
+    environment:
+      - POSTGRES_USER=${DB_MAIN_USERNAME}
+      - POSTGRES_PASSWORD=${DB_MAIN_PASSWORD}
+      - POSTGRES_DB=${DB_MAIN_DATABASE}
+    volumes:
+      - oauth2-postgres-db-main:/var/lib/postgresql/data/
+
+  oauth2_db_users:
+    image: postgres:14.9
+    container_name: oauth2_db_users
+    restart: unless-stopped
+    hostname: db_users
+    ports:
+      - "6543:5432"
+    environment:
+      - POSTGRES_USER=${DB_USERS_USERNAME}
+      - POSTGRES_PASSWORD=${DB_USERS_PASSWORD}
+      - POSTGRES_DB=${DB_USERS_DATABASE}
+    volumes:
+      - oauth2-postgres-db-users:/var/lib/postgresql/data/
+
+volumes:
+  oauth2-postgres-db-main:
+  oauth2-postgres-db-users:

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create client page</title>
+  <link rel="stylesheet" href="/css/client-create.css">
+  <link rel="icon" type="image/x-icon" href="#">
+
+  <script src="/scripts/add-list-item.js"></script>
+  <script src="/scripts/delete-list-item.js"></script>
+  <script src="/scripts/create-client.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <a href="{{ clientListGetLink }}?token={{token}}">Back</a>
+  </header>
+  <main>
+    <form id="client-form">
+      <div class="form-container">
+        <div class="form-left">
+          <div class="labeled-input">
+            <label for="name"><span>*</span>name</label>
+            <input class="name" name="name" type="text" placeholder="Client example" required>
+          </div>
+
+          <div class="labeled-input">
+            <label for="logo-link">logo link</label>
+            <input id="logo-link" name="logoLink" type="text" placeholder="https://example.png">
+          </div>
+
+          <div class="redirect-uris">
+            <p><span>*</span>redirect uris</p>
+            <div class="list">
+              <div class="list-items">
+                <div id="redirect-uri-item_1" class="redirect-uri-item">
+                  <input id="redirect-uri" name="redirectUri" type="text" placeholder="https://example.com" required>
+                  <button data-not-empty="1" type="button" onclick="deleteListItem(this)" class="btn-remove">Remove</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" onclick="addListItem('redirect-uri-item', 'redirect-uris')" class="btn-add">Add</button>
+          </div>
+        </div>
+        <div class="form-right">
+          <div class="scopes">
+            <p>scopes</p>
+            <div class="list">
+              <div class="list-header">
+                <p>Title</p>
+                <p>Description</p>
+              </div>
+              <div class="list-items">
+<!--                <div id="scope-item_1" class="scope-item">-->
+<!--                  <input class="title" name="title" type="text" placeholder="example">-->
+<!--                  <input class="description" name="scope" type="text" placeholder="example description">-->
+<!--                  <button type="button" onclick="deleteListItem(this)" class="btn-remove">Remove</button>-->
+<!--                </div>-->
+              </div>
+            </div>
+            <button type="button" onclick="addListItem('scope-item', 'scopes')" class="btn-add">Add</button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn-create-client"
+      >Create client</button>
+    </form>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('client-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    createClient(event, `{{ createClientPostLink }}?token={{token}}`);
+  });
+</script>
+</body>
+</html>

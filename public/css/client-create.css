@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-size: 17px;
+}
+
+button {
+    border: none;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    background-color: cadetblue;
+}
+
+header button:last-child {
+    margin-left: auto;
+}
+
+header button, header a {
+    padding: 10px 15px;
+    background-color: cadetblue;
+    border-left: 2px solid #385759;
+    border-right: 2px solid #385759;
+    width: 160px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+header button:hover, header a:hover {
+    background-color: #385759;
+    color: orangered;
+}
+
+header a {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 93vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60vw;
+    height: 80vh;
+    margin: 15px auto;
+    background-color: #fff;
+    border-radius: 17px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.form-container {
+    display: flex;
+    margin: 15px 24px;
+    height: 100%;
+}
+
+.form-left {
+    flex-basis: 40%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.form-right {
+    margin-left: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-create-client {
+    background-color: cadetblue;
+    border-radius: 0 0 17px 17px;
+    padding: 20px;
+    width: 100%;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-create-client:hover {
+    background-color: #385759;
+}
+
+.labeled-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.labeled-input input {
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid cadetblue;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.labeled-input label {
+    margin-bottom: 3px;
+}
+
+span {
+    color: red;
+}
+
+.redirect-uris {
+    display: flex;
+    flex-flow: column;
+    flex-grow : 1;
+}
+
+.redirect-uri-item {
+    display: flex;
+    margin-top: 3px;
+    width: 100%;
+    padding: 2px 0 0 4px;
+    border-bottom: 1px solid cadetblue;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.redirect-uri-item > input:nth-child(1) {
+    width: 80%;
+}
+
+.btn-remove {
+    background-color: cadetblue;
+    width: 50px;
+    padding: 2px;
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-left: auto;
+}
+
+.btn-remove:hover {
+    background-color: #385759;
+}
+
+.redirect-uri-item input {
+    outline: none;
+    border: none;
+}
+
+.list {
+    border: 1px dotted cadetblue;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 8px 0 8px;
+    overflow: hidden;
+    overflow-y:scroll;
+}
+
+.list-items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.list-items::-webkit-scrollbar-thumb {
+    border-radius: 34px;
+    background-color: cadetblue;
+}
+
+.redirect-uris .list-items {
+    height: 43vh;
+    align-items: center;
+}
+
+.scopes .list-items {
+    height: 56.6vh;
+}
+
+.scopes {
+    display: flex;
+    flex-flow: column;
+}
+
+.scopes > p {
+    margin-bottom: 3px;
+}
+
+.btn-create-client {
+    background-color: cadetblue;
+    border-radius: 0 0 17px 17px;
+    padding: 20px;
+    width: 100%;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-create-client:hover {
+    background-color: #385759;
+}
+
+.btn-add {
+    background-color: cadetblue;
+    width: 40px;
+    padding: 2px;
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 0 0 4px 4px;
+}
+
+.btn-add:hover {
+    background-color: #385759;
+}
+
+.redirect-uris p {
+    margin-bottom: 3px;
+}
+
+.list-header {
+    display: flex;
+    padding: 5px 8px;
+    background-color: #385759;
+    font-size: 14px;
+    color: white;
+}
+
+.list-header > p:first-child {
+    flex-basis: 30%;
+    margin-right: 4px;
+}
+
+.scope-item {
+    display: flex;
+    margin-top: 3px;
+    width: 100%;
+    padding: 2px 0 0 4px;
+    border-bottom: 1px solid cadetblue;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.scope-item input {
+    outline: none;
+    border: none;
+}
+
+.scope-item > input:nth-child(1) {
+    width: 30%;
+}
+
+.scope-item > input:nth-child(2) {
+    margin-left: 4px;
+    width: 58%;
+}
+

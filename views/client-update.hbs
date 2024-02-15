@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update client page</title>
+  <link rel="stylesheet" href="/css/client-update.css">
+  <link rel="icon" type="image/x-icon" href="#">
+
+  <script src="/scripts/add-list-item.js"></script>
+  <script src="/scripts/delete-list-item.js"></script>
+  <script src="/scripts/update-client.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <a href="{{ clientListGetLink }}?token={{token}}">Back</a>
+  </header>
+  <main>
+    <form id="client-form">
+      <div class="form-container">
+        <div data-client-id="{{client.id}}" class="form-left">
+          <div class="labeled-input">
+            <label for="name"><span>*</span>name</label>
+            <input value="{{client.name}}" class="name" name="name" type="text" placeholder="Client example" required>
+          </div>
+
+          <div class="labeled-input">
+            <label for="logo-link">logo link</label>
+            <input value="{{client.logoLink}}" id="logo-link" name="logoLink" type="text" placeholder="https://example.png">
+          </div>
+
+          <div class="redirect-uris">
+            <p><span>*</span>redirect uris</p>
+            <div class="list">
+              <div class="list-items">
+                {{#each client.redirectUris}}
+                  <div id="redirect-uri-item_{{@index}}" class="redirect-uri-item">
+                    <input value="{{this}}" id="redirect-uri" name="redirectUri" type="text" placeholder="https://example.com" required>
+                    <button data-not-empty="1" type="button" onclick="deleteListItem(this)" class="btn-remove">Remove</button>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+            <button type="button" onclick="addListItem('redirect-uri-item', 'redirect-uris')" class="btn-add">Add</button>
+          </div>
+        </div>
+        <div class="form-right">
+          <div class="scopes">
+            <p>scopes</p>
+            <div class="list">
+              <div class="list-header">
+                <p>Title</p>
+                <p>Description</p>
+              </div>
+              <div class="list-items">
+                {{#each client.scopes}}
+                  <div data-db-id="{{this.id}}" id="scope-item_{{@index}}" class="scope-item">
+                    <input value="{{this.title}}" class="title" name="title" type="text" required placeholder="example">
+                    <input value="{{this.description}}" class="description" name="scope" type="text" required placeholder="example description">
+                    <button type="button" onclick="deleteListItem(this)" class="btn-remove">Remove</button>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+            <button type="button" onclick="addListItem('scope-item', 'scopes')" class="btn-add">Add</button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn-update-client"
+      >Update client</button>
+    </form>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('client-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    updateClient(event, `{{ updateClientPutLink }}?token={{token}}`);
+  });
+</script>
+</body>
+</html>

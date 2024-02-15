@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client info page</title>
+  <link rel="stylesheet" href="/css/client-info.css">
+  <link rel="icon" type="image/x-icon" href="#">
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <a href="{{ clientListGetLink }}?token={{token}}">Back</a>
+  </header>
+  <main>
+    <div class="content">
+      <div class="profile">
+        <div class="profile-header">
+          <img src="/images/no-logo.png" alt="no logo">
+          <h3>{{client.name}}</h3>
+        </div>
+        <div class="row">
+          <p class="label">id</p>
+          <p class="value">{{client.id}}</p>
+        </div>
+        <div class="row">
+          <p class="label">logo link</p>
+          {{#if author}}
+            <p class="value">{{client.logoLink}}</p>
+          {{else}}
+            <p class="value">[No logo link]</p>
+          {{/if}}
+        </div>
+        <div class="row">
+          <p class="label">created</p>
+          <p class="value">{{client.createdAt}}</p>
+        </div>
+        <div class="row">
+          <p class="label">updated</p>
+          <p class="value">{{client.updatedAt}}</p>
+        </div>
+      </div>
+
+      <div class="redirect-uris">
+        <p>redirect uris</p>
+        <div class="list">
+          <div class="list-items">
+            {{#each client.redirectUris}}
+              <div class="redirect-uri">
+                <p>{{this}}</p>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="scopes">
+        <p>scopes</p>
+        <div class="list">
+          <div class="list-header">
+            <p>Title</p>
+            <p>Description</p>
+          </div>
+          <div class="list-items">
+            {{#each client.scopes}}
+              <div class="scope">
+                <p>{{title}}</p>
+                <p>{{description}}</p>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

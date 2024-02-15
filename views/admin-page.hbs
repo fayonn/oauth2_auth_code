@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin page</title>
+  <link rel="stylesheet" href="/css/admin-page.css">
+  <link rel="icon" type="image/x-icon" href="#">
+  <script src="/scripts/copy-to-clipboard.js"></script>
+  <script src="/scripts/delete-client.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <button type="button" onclick="copyToClipboard(`{{publicKey}}`)" id="copy-public-key">Public key</button>
+    <a href="{{createClientGetLink}}?token={{token}}">Create client</a>
+  </header>
+  <main>
+    <div class="clients">
+      <div class="list-headers">
+        <p class="id">ID</p>
+        <p class="name">Name</p>
+      </div>
+      <div class="list-items">
+        {{#each clients}}
+          <div class="client">
+            <p>{{id}}</p>
+            <p>{{name}}</p>
+            <div class="client-actions">
+              <a class="btn-client-info" href="{{@root.infoClientGetLink}}/{{id}}?token={{@root.token}}">More</a>
+              <a class="btn-client-update" href="{{@root.updateClientGetLink}}/{{id}}?token={{@root.token}}">Update</a>
+              <button onclick="deleteClient('{{@root.deleteClientDeleteLink}}/{{id}}?token={{@root.token}}')" class="btn-client-delete">Delete</button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

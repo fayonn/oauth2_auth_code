@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consent page</title>
+  <link rel="stylesheet" href="/css/consent.css">
+  <link rel="icon" type="image/x-icon" href="#">
+</head>
+<body>
+<div class="wrapper">
+  <main>
+    <form method="post" action="{{consentPostLink}}">
+      <div class="header">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      <div class="content">
+
+
+        {{#if scopes}}
+          <p>Hi, <span>{{email}}</span>, <span>{{client.name}}</span> is requesting access: </p>
+
+          <div class="scopes">
+            <div class="list">
+              <div class="list-header">
+                <p>Title</p>
+                <p>Description</p>
+              </div>
+              <div class="list-items">
+                {{#each client.scopes}}
+                  <div class="scope-item">
+                    <p>{{title}}</p>
+                    <p>{{description}}</p>
+                  </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+
+        {{else}}
+          <p>Hi, <span>{{email}}</span>, <span>{{client.name}}</span> is requesting access to your account</p>
+        {{/if}}
+
+      </div>
+      <div class="footer">
+        <button value="true" name="permission">Allow</button>
+        <button value="false" name="permission">Deny</button>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="icon" type="image/x-icon" href="#">
+</head>
+<body>
+<div class="wrapper">
+  <main>
+    <form method="post" action="{{ loginPostLink }}">
+      <div class="header">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      <div class="content">
+        <div class="labeled-input">
+          <label for="email"><span>*</span>email</label>
+          <input id="email" name="email" type="email" placeholder="ex@mple.com" required>
+        </div>
+
+        <div class="labeled-input">
+          <label for="password"><span>*</span>password</label>
+          <input id="password" name="password" type="password" placeholder="****" required>
+        </div>
+      </div>
+      <div class="footer">
+        <button>Sign In</button>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>
